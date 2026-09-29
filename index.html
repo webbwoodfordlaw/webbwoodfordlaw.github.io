@@ -1,115 +1,605 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webb & Woodfield Attorneys at Law | Lexington, KY</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #03070f;
-            --bg-secondary: #08111e;
-            --bg-card: #0d1a2d;
-            --accent: #d4af37;
-            --accent-hover: #e6c55c;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(212, 175, 55, 0.25);
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-primary); color: var(--text-main); line-height: 1.8; overflow-x: hidden; }
-        .top-bar { background-color: #010408; border-bottom: 1px solid var(--border); padding: 0.5rem 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-muted); }
-        .top-bar span { color: var(--accent); font-weight: 600; }
-        header { background-color: rgba(3, 7, 15, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; padding: 1rem 4%; display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
-        .logo-box { width: 38px; height: 38px; border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-weight: 800; color: var(--accent); background: var(--bg-secondary); border-radius: 4px; }
-        .logo-text { font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 700; color: var(--text-main); letter-spacing: 1.5px; display: block; }
-        .logo-sub { color: var(--accent); font-size: 0.55rem; letter-spacing: 3.5px; text-transform: uppercase; display: block; }
-        nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-        nav a { color: var(--text-muted); text-decoration: none; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-        nav a:hover, nav a.active { color: var(--accent); }
-        .nav-btn { background-color: var(--accent); color: var(--bg-primary) !important; padding: 0.4rem 0.9rem; border-radius: 4px; font-weight: 700 !important; }
-        .page { display: none; }
-        .page.active { display: block; }
-        .hero { min-height: 85vh; display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; padding: 4rem 8%; background: linear-gradient(135deg, #02050b 0%, #08111e 100%); gap: 4rem; }
-        .hero h1 { font-family: 'Cinzel', serif; font-size: 2.8rem; line-height: 1.25; margin-bottom: 1.5rem; }
-        .hero h1 span { color: var(--accent); }
-        .hero p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2.5rem; }
-        .hero-highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-        .highlight-card { background-color: var(--bg-secondary); border: 1px solid var(--border); padding: 1.5rem; border-radius: 6px; }
-        .highlight-card h4 { font-family: 'Cinzel', serif; color: var(--accent); font-size: 1rem; margin-bottom: 0.3rem; }
-        .highlight-card p { font-size: 0.8rem; margin: 0; color: var(--text-muted); }
-        .btn-primary { display: inline-block; background-color: var(--accent); color: var(--bg-primary); padding: 0.9rem 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; }
-        .section-header { text-align: center; max-width: 800px; margin: 0 auto 3.5rem auto; }
-        .section-header h2 { font-family: 'Cinzel', serif; font-size: 2.3rem; margin-bottom: 0.8rem; }
-        .section-header .subtitle { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.4rem; display: block; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-        .service-card { background-color: var(--bg-card); border: 1px solid var(--border); padding: 2.5rem; border-radius: 8px; cursor: pointer; }
-        .service-card h3 { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; }
-        .service-card h3::after { content: '+'; color: var(--accent); font-size: 1.5rem; }
-        .service-card p.summary { color: var(--text-muted); font-size: 0.92rem; }
-        .service-expanded-content { display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.9rem; }
-        .service-card.open .service-expanded-content { display: block; }
-        .service-card.open h3::after { transform: rotate(45deg); }
-        footer { background-color: #010408; border-top: 1px solid var(--border); text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.8rem; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webb &amp; Woodford — Attorneys at Law | Online Harassment, Defamation &amp; Reputation Defense — Lexington, KY</title>
+<meta name="description" content="Webb & Woodford is a Lexington, Kentucky law firm holding online harassers, defamers, and anonymous attackers accountable. Harassment defense, defamation lawsuits, unmasking anonymous posters, and content takedowns.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1428; --navy2:#0e1c36; --navy3:#132540;
+  --gold:#c9a227; --gold-lt:#e3c565; --gold-dk:#a07f1c;
+  --ink:#1a2332; --mut:#5b6b84; --line:#e6eaf1;
+  --bg:#f7f8fb; --card:#ffffff;
+  --rad:16px; --shadow:0 18px 45px rgba(10,20,40,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;line-height:1.2;color:var(--navy)}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.sec-kicker{display:inline-flex;align-items:center;gap:10px;color:var(--gold-dk);font-weight:700;font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px}
+.sec-kicker::before{content:"";width:34px;height:2px;background:var(--gold);display:inline-block}
+.sec-title{font-size:clamp(30px,4vw,46px);font-weight:700;margin-bottom:16px}
+.sec-sub{color:var(--mut);font-size:17px;max-width:680px}
+/* ---------- top bar ---------- */
+.topbar{background:var(--navy);color:#cdd7e6;font-size:13px;padding:9px 0}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.topbar a{color:#fff;text-decoration:none;font-weight:600}
+.topbar .tb-right{display:flex;gap:22px;align-items:center}
+.tb-dot{color:var(--gold)}
+/* ---------- header ---------- */
+header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1200px;margin:0 auto;position:relative}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+.brand-mark{width:46px;height:46px;border-radius:11px;background:linear-gradient(135deg,var(--navy),var(--navy3));color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:19px;border:1px solid rgba(201,162,39,.5)}
+.brand-name{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:var(--navy);line-height:1.15}
+.brand-name small{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:10.5px;letter-spacing:3px;color:var(--gold-dk);text-transform:uppercase}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-weight:600;font-size:14.5px;color:var(--ink)}
+.nav-links a:hover{color:var(--gold-dk)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 30px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;cursor:pointer;border:none;transition:transform .18s ease,box-shadow .18s ease}
+.btn-gold{background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:#231a02;box-shadow:0 10px 24px rgba(201,162,39,.35)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(201,162,39,.45)}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55)}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy3)}
+.burger{display:none;background:none;border:none;font-size:26px;color:var(--navy);cursor:pointer}
+/* ---------- hero ---------- */
+.hero{position:relative;color:#fff;padding:150px 0 120px;overflow:hidden;background:var(--navy)}
+.hero-bg{position:absolute;inset:0;background:url('images/hero-bg.webp') center/cover no-repeat;opacity:.5}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,16,34,.94) 20%,rgba(8,16,34,.72) 55%,rgba(8,16,34,.35) 100%)}
+.hero .wrap{position:relative;z-index:2}
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.45);color:var(--gold-lt);font-size:12.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:9px 18px;border-radius:999px;margin-bottom:26px}
+.hero h1{color:#fff;font-size:clamp(40px,6vw,72px);font-weight:800;max-width:800px;margin-bottom:22px}
+.hero h1 .gold{color:var(--gold-lt)}
+.hero p.lead{font-size:19px;color:#d7deeb;max-width:640px;margin-bottom:36px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:54px}
+.hero-badges{display:flex;gap:14px;flex-wrap:wrap}
+.hbadge{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:600;color:#e8edf5}
+.hbadge .tick{color:var(--gold-lt);font-weight:800}
+/* ---------- stats ---------- */
+.stats{background:var(--navy);border-top:1px solid rgba(201,162,39,.25);padding:0;color:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1200px;margin:0 auto}
+.stat{padding:38px 28px;text-align:center;border-left:1px solid rgba(255,255,255,.09)}
+.stat:first-child{border-left:none}
+.stat .num{font-family:'Playfair Display',serif;font-size:40px;font-weight:800;color:var(--gold-lt)}
+.stat .lbl{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#aeb9cd;margin-top:6px;font-weight:600}
+/* ---------- practice ---------- */
+.practice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:34px 30px;box-shadow:0 6px 20px rgba(10,20,40,.05);transition:transform .2s ease,box-shadow .2s ease;cursor:pointer}
+.pcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.pcard .icon{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--navy),var(--navy3));color:var(--gold-lt);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}
+.pcard h3{font-size:21px;margin-bottom:10px}
+.pcard p{color:var(--mut);font-size:15px}
+.pcard .more{max-height:0;overflow:hidden;transition:max-height .35s ease;color:var(--mut);font-size:14.5px}
+.pcard .more p{margin:12px 0 4px}
+.pcard .more ul{margin:8px 0 4px 18px}
+.pcard.open .more{max-height:420px}
+.pcard .toggle{margin-top:16px;color:var(--gold-dk);font-weight:700;font-size:13.5px;letter-spacing:.5px}
+/* ---------- firm / about ---------- */
+.firm{background:#fff}
+.firm-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.firm-img{border-radius:20px;overflow:hidden;box-shadow:var(--shadow);position:relative}
+.firm-img img{width:100%;height:520px;object-fit:cover}
+.firm-img::after{content:"";position:absolute;inset:0;border-radius:20px;border:1px solid rgba(201,162,39,.35);pointer-events:none}
+.firm-copy p{color:var(--mut);margin-bottom:18px;font-size:16.5px}
+.firm-points{list-style:none;margin:26px 0}
+.firm-points li{display:flex;gap:14px;margin-bottom:14px;font-weight:600;font-size:15.5px}
+.firm-points .tick{flex:0 0 26px;height:26px;border-radius:50%;background:rgba(201,162,39,.15);color:var(--gold-dk);display:flex;align-items:center;justify-content:center;font-weight:800}
+/* ---------- attorneys ---------- */
+.att-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px}
+.att-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 6px 20px rgba(10,20,40,.05);display:flex}
+.att-photo{flex:0 0 220px;background:linear-gradient(150deg,var(--navy2),var(--navy));display:flex;align-items:center;justify-content:center;position:relative}
+.att-photo .mono{width:120px;height:120px;border-radius:50%;border:2px solid rgba(201,162,39,.6);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:40px;font-weight:700;color:var(--gold-lt);background:rgba(201,162,39,.08)}
+.att-body{padding:34px 32px}
+.att-body .role{color:var(--gold-dk);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.att-body h3{font-size:26px;margin-bottom:10px}
+.att-body p{color:var(--mut);font-size:15px;margin-bottom:8px}
+.att-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.att-tags span{background:var(--bg);border:1px solid var(--line);font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;color:var(--navy)}
+/* ---------- results ---------- */
+.results{background:var(--navy);color:#fff}
+.results .sec-title{color:#fff}
+.results .sec-sub{color:#aeb9cd}
+.res-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.res-card{background:rgba(255,255,255,.05);border:1px solid rgba(201,162,39,.3);border-radius:var(--rad);padding:36px 28px;text-align:center}
+.res-card .amt{font-family:'Playfair Display',serif;font-size:38px;font-weight:800;color:var(--gold-lt);margin-bottom:10px}
+.res-card .lbl{font-size:14px;color:#cdd7e6;font-weight:600}
+.res-note{margin-top:28px;font-size:13px;color:#8b97ad;text-align:center}
+/* ---------- reviews ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.rev-card{background:#fff;border:1px solid var(--line);border-radius:var(--rad);padding:34px 30px;box-shadow:0 6px 20px rgba(10,20,40,.05);display:flex;flex-direction:column}
+.stars{color:var(--gold);font-size:19px;letter-spacing:3px;margin-bottom:16px}
+.rev-card blockquote{font-size:15.5px;color:var(--ink);flex:1;margin-bottom:22px}
+.rev-who{display:flex;align-items:center;gap:14px}
+.rev-ava{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy3));color:var(--gold-lt);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;flex:0 0 48px}
+.rev-who .n{font-weight:700;font-size:15px}
+.rev-who .t{font-size:13px;color:var(--mut)}
+.rev-cta{margin-top:44px;text-align:center;background:#fff;border:1px dashed rgba(201,162,39,.55);border-radius:var(--rad);padding:34px}
+.rev-cta p{color:var(--mut);margin-bottom:18px;font-size:16px}
+/* ---------- process ---------- */
+.process{background:#fff}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.step{background:var(--bg);border:1px solid var(--line);border-radius:var(--rad);padding:38px 32px}
+.step .n{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:#231a02;font-family:'Playfair Display',serif;font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.step h3{font-size:21px;margin-bottom:10px}
+.step p{color:var(--mut);font-size:15px}
+/* ---------- contact ---------- */
+.contact{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#fff}
+.contact .sec-title{color:#fff}
+.contact .sec-sub{color:#aeb9cd}
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;margin-top:48px;align-items:start}
+.c-row{display:flex;gap:18px;margin-bottom:26px;align-items:flex-start}
+.c-ico{flex:0 0 50px;height:50px;border-radius:13px;background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.4);display:flex;align-items:center;justify-content:center;font-size:21px}
+.c-row h4{font-size:16px;margin-bottom:4px;color:#fff}
+.c-row p,.c-row a{color:#c4cddf;font-size:15px;text-decoration:none}
+.c-row a:hover{color:var(--gold-lt)}
+.c-form{background:#fff;border-radius:20px;padding:40px;color:var(--ink);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.c-form h3{font-size:24px;margin-bottom:6px}
+.c-form>p{color:var(--mut);font-size:14.5px;margin-bottom:24px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-group{margin-bottom:16px}
+.f-group label{display:block;font-weight:600;font-size:13.5px;margin-bottom:7px}
+.f-group input,.f-group select,.f-group textarea{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;background:#fbfcfe}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{outline:none;border-color:var(--gold);background:#fff}
+.f-group textarea{resize:vertical;min-height:120px}
+.form-note{font-size:12.5px;color:var(--mut);margin-top:14px;text-align:center}
+/* ---------- footer ---------- */
+footer{background:#070d1c;color:#93a0b8;padding:60px 0 30px;font-size:14px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;margin-bottom:40px}
+.foot-grid h4{color:#fff;font-size:15px;margin-bottom:16px;letter-spacing:1px}
+.foot-grid ul{list-style:none}
+.foot-grid li{margin-bottom:10px}
+.foot-grid a{color:#93a0b8;text-decoration:none}
+.foot-grid a:hover{color:var(--gold-lt)}
+.foot-brand p{margin:14px 0;max-width:340px}
+.disclaimer{border-top:1px solid rgba(255,255,255,.1);padding-top:26px;font-size:12.5px;color:#6b7891}
+.copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:22px;font-size:13px}
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:none}
+/* ---------- responsive ---------- */
+@media(max-width:980px){
+  .practice-grid,.rev-grid,.steps{grid-template-columns:1fr 1fr}
+  .stats-grid,.res-grid{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none}
+  .stat{border-top:1px solid rgba(255,255,255,.09)}
+  .firm-grid,.contact-grid,.att-grid{grid-template-columns:1fr}
+  .att-card{flex-direction:column}
+  .att-photo{flex:none;padding:44px 0}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  section{padding:64px 0}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px 28px;gap:18px;border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.12)}
+  .nav-links.open{display:flex}
+  .burger{display:block}
+  .nav .btn{display:none}
+  .practice-grid,.rev-grid,.steps{grid-template-columns:1fr}
+  .hero{padding:100px 0 80px}
+  .f-row{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .topbar .tb-left{display:none}
+}
+</style>
 </head>
 <body>
-    <div class="top-bar">
-        <div>Lexington, KY Headquarters | 333 W Vine St</div>
-        <div>Emergency Digital Defense Line: <span>(937) 349-6547</span></div>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">333 W Vine St, Lexington, KY <span class="tb-dot">●</span> Serving clients nationwide</div>
+    <div class="tb-right">
+      <span>24/7 Emergency Line</span>
+      <a href="tel:+19373496547">(937) 349-6547</a>
     </div>
-    <header>
-        <a onclick="showPage('home')" class="logo">
-            <div class="logo-box">W²</div>
-            <div>
-                <span class="logo-text">WEBB & WOODFIELD</span>
-                <span class="logo-sub">Attorneys At Law • Lexington, KY</span>
-            </div>
-        </a>
-        <nav>
-            <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
-            <a onclick="showPage('contact')" class="nav-btn">Consultation</a>
-        </nav>
-    </header>
-    <div id="page-home" class="page active">
-        <section class="hero">
-            <div>
-                <h1>Internet Trolls on TikTok, YouTube & Facebook Think They Are Untouchable. <span>Webb & Woodfield Make Them Pay.</span></h1>
-                <p>Operating from Lexington, Kentucky, our firm delivers unyielding legal retaliation against online harassers, social media trolls, Discord servers, and blog operators.</p>
-                <button onclick="showPage('contact')" class="btn-primary">Schedule Consultation</button>
-            </div>
-            <div class="hero-highlights">
-                <div class="highlight-card">
-                    <h4>Multi-Platform Subpoenas</h4>
-                    <p>Emergency takedowns and ISP unmasking across TikTok, YouTube, Facebook, and Discord.</p>
-                </div>
-                <div class="highlight-card">
-                    <h4>Lexington Headquartered</h4>
-                    <p>Rooted at 333 W Vine St, protecting clients locally and nationwide.</p>
-                </div>
-            </div>
-        </section>
+  </div>
+</div>
+
+<header class="site">
+  <nav class="nav">
+    <a class="brand" href="#top">
+      <span class="brand-mark">W²</span>
+      <span class="brand-name">Webb &amp; Woodford<small>Attorneys at Law</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#attorneys">Attorneys</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-gold" style="padding:11px 24px">Free Consultation</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div><div class="hero-veil"></div>
+  <div class="wrap">
+    <span class="hero-kicker">Lexington, KY — Digital Harassment &amp; Defamation Law</span>
+    <h1>Webb. Woodford. <span class="gold">We Win.</span></h1>
+    <p class="lead">Someone is attacking you online — spreading lies, posting your private information, hiding behind a fake account. We find them, we expose them, and we make them pay. That is what we do.</p>
+    <div class="hero-ctas">
+      <a href="tel:+19373496547" class="btn btn-gold">📞 Get Immediate Help</a>
+      <a href="#contact" class="btn btn-outline">Tell Us What Happened →</a>
     </div>
-    <div id="page-contact" class="page">
-        <div class="container">
-            <div class="section-header">
-                <span class="subtitle">Get In Touch</span>
-                <h2>Confidential Consultation</h2>
-                <p>Reach out immediately to stop digital harassment and protect your character.</p>
-            </div>
+    <div class="hero-badges">
+      <span class="hbadge"><span class="tick">✓</span> Anonymous attackers unmasked</span>
+      <span class="hbadge"><span class="tick">✓</span> Defamatory content removed</span>
+      <span class="hbadge"><span class="tick">✓</span> Maximum compensation pursued</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="num">24/7</div><div class="lbl">Emergency Response</div></div>
+    <div class="stat"><div class="num">50+</div><div class="lbl">Platforms &amp; Networks Covered</div></div>
+    <div class="stat"><div class="num">100%</div><div class="lbl">Commitment to Your Case</div></div>
+    <div class="stat"><div class="num">KY</div><div class="lbl">Based — Practicing Nationwide</div></div>
+  </div>
+</div>
+
+<section id="practice">
+  <div class="wrap">
+    <span class="sec-kicker rv">What We Do</span>
+    <h2 class="sec-title rv">Practice Areas</h2>
+    <p class="sec-sub rv">The internet gave cowards a mask. We take it off. Every matter below is handled personally by a licensed attorney — never outsourced, never ignored.</p>
+    <div class="practice-grid">
+      <div class="pcard rv">
+        <div class="icon">🛡️</div>
+        <h3>Online Harassment &amp; Cyberstalking Defense</h3>
+        <p>Coordinated pile-ons, threats, doxxing, and stalking campaigns shut down fast — with protective orders and civil claims where they count.</p>
+        <div class="more">
+          <ul>
+            <li>Emergency protective &amp; restraining orders</li>
+            <li>Doxxing and private-information removal</li>
+            <li>Civil claims for intentional infliction of distress</li>
+            <li>Coordination with law enforcement referrals</li>
+          </ul>
         </div>
+        <div class="toggle">+ Learn more</div>
+      </div>
+      <div class="pcard rv">
+        <div class="icon">⚖️</div>
+        <h3>Defamation — Libel &amp; Slander</h3>
+        <p>False reviews, viral lies, and smear posts that cost you customers, jobs, or your name. We sue, and we collect.</p>
+        <div class="more">
+          <ul>
+            <li>Defamation lawsuits against individuals &amp; businesses</li>
+            <li>False-review and fake-post litigation</li>
+            <li>Retraction and correction demands</li>
+            <li>Damages for lost business and reputational harm</li>
+          </ul>
+        </div>
+        <div class="toggle">+ Learn more</div>
+      </div>
+      <div class="pcard rv">
+        <div class="icon">🔍</div>
+        <h3>Unmasking Anonymous Attackers</h3>
+        <p>"Anonymous" is a feeling, not a legal status. Subpoenas, platform disclosure orders, and forensic tracing reveal who is really behind the screen.</p>
+        <div class="more">
+          <ul>
+            <li>John Doe lawsuits to unlock subpoena power</li>
+            <li>Platform &amp; ISP disclosure orders</li>
+            <li>Forensic identification of fake accounts</li>
+            <li>Then: full litigation against the real person</li>
+          </ul>
+        </div>
+        <div class="toggle">+ Learn more</div>
+      </div>
+      <div class="pcard rv">
+        <div class="icon">🧹</div>
+        <h3>Content Takedowns</h3>
+        <p>Defamatory articles, videos, and posts removed at the source — from platforms, search results, and the sites hosting them.</p>
+        <div class="more">
+          <ul>
+            <li>Platform reporting &amp; legal removal requests</li>
+            <li>De-indexing defamatory search results</li>
+            <li>Copyright &amp; privacy-based takedowns</li>
+            <li>Court orders compelling removal</li>
+          </ul>
+        </div>
+        <div class="toggle">+ Learn more</div>
+      </div>
+      <div class="pcard rv">
+        <div class="icon">🔒</div>
+        <h3>Non-Consensual Imagery &amp; Sextortion</h3>
+        <p>Revenge porn and sextortion are crimes and civil wrongs. We move immediately to stop distribution and punish the perpetrator.</p>
+        <div class="more">
+          <ul>
+            <li>Rapid multi-platform removal of intimate images</li>
+            <li>Civil claims under state revenge-porn statutes</li>
+            <li>Sextortion response &amp; evidence preservation</li>
+            <li>Anonymous filing options where available</li>
+          </ul>
+        </div>
+        <div class="toggle">+ Learn more</div>
+      </div>
+      <div class="pcard rv">
+        <div class="icon">🏢</div>
+        <h3>Business &amp; Brand Reputation</h3>
+        <p>One viral lie can erase years of goodwill. We protect companies, executives, and professionals from coordinated reputation attacks.</p>
+        <div class="more">
+          <ul>
+            <li>False-review ring &amp; competitor-smear litigation</li>
+            <li>Executive impersonation &amp; fake-profile removal</li>
+            <li>Trade libel and injurious-falsehood claims</li>
+            <li>Ongoing monitoring &amp; rapid-response counsel</li>
+          </ul>
+        </div>
+        <div class="toggle">+ Learn more</div>
+      </div>
     </div>
-    <footer>
-        <p>&copy; 2026 Webb & Woodfield Attorneys at Law. All Rights Reserved. Lexington, Kentucky.</p>
-    </footer>
-    <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page-' + pageId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+  </div>
+</section>
+
+<section class="firm" id="firm">
+  <div class="wrap firm-grid">
+    <div class="firm-img rv">
+      <img src="images/office.webp" alt="Webb & Woodford law office">
+    </div>
+    <div class="firm-copy rv">
+      <span class="sec-kicker">The Firm</span>
+      <h2 class="sec-title">A Law Firm Built for the Internet Age</h2>
+      <p>Webb &amp; Woodford is a Lexington, Kentucky law firm focused on one thing: holding people accountable for what they do online. While traditional firms treat the internet as an afterthought, we built our practice around it — the platforms, the subpoena procedures, the forensic tools, and the litigation strategies that actually work against digital harassers.</p>
+      <p>When someone hides behind anonymity to destroy your reputation, your business, or your peace of mind, you don't need sympathy. You need lawyers who know exactly how to find them and make them answer for it.</p>
+      <ul class="firm-points">
+        <li><span class="tick">✓</span> Licensed Kentucky attorneys — practicing in state and federal court</li>
+        <li><span class="tick">✓</span> Deep platform &amp; subpoena expertise across every major network</li>
+        <li><span class="tick">✓</span> Direct attorney access — your case is never handed to a call center</li>
+        <li><span class="tick">✓</span> Urgent matters triaged the same day you call</li>
+      </ul>
+      <a href="#attorneys" class="btn btn-navy">Meet the Attorneys →</a>
+    </div>
+  </div>
+</section>
+
+<section id="attorneys">
+  <div class="wrap">
+    <span class="sec-kicker rv">Our Team</span>
+    <h2 class="sec-title rv">The Attorneys</h2>
+    <p class="sec-sub rv">Seasoned litigators who understand both the courtroom and the comment section.</p>
+    <div class="att-grid">
+      <div class="att-card rv">
+        <div class="att-photo"><span class="mono">WW</span></div>
+        <div class="att-body">
+          <div class="role">Founding Partner</div>
+          <h3>Woodford Webb</h3>
+          <p>A licensed Kentucky attorney and Lexington business leader, Woodford brings decades of courtroom, boardroom, and real-world experience to every case. Admitted to practice in Kentucky and before the U.S. District Courts for the Eastern and Western Districts of Kentucky and the U.S. Court of Appeals for the Sixth Circuit.</p>
+          <div class="att-tags"><span>Defamation Litigation</span><span>Harassment Defense</span><span>Business Law</span></div>
+        </div>
+      </div>
+      <div class="att-card rv">
+        <div class="att-photo"><span class="mono">+</span></div>
+        <div class="att-body">
+          <div class="role">Partner</div>
+          <h3>Partner Profile Coming Soon</h3>
+          <p>Send us your photo, name, and bio and this card will be completed — or we can remove it if the firm is presented as a solo practice.</p>
+          <div class="att-tags"><span>Photo forthcoming</span><span>Bio forthcoming</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SAMPLE CONTENT — REPLACE WITH REAL CASE RESULTS BEFORE SHARING
+     Publishing invented settlement figures for a law firm can
+     violate attorney advertising rules. These numbers are PLACEHOLDERS.
+     ============================================================ -->
+<section class="results" id="results">
+  <div class="wrap">
+    <span class="sec-kicker rv">Case Results</span>
+    <h2 class="sec-title rv">We Don't Bluff. We Collect.</h2>
+    <p class="sec-sub rv">A sample of the outcomes we've secured for clients targeted online. Every case is different — but our approach never is.</p>
+    <div class="res-grid">
+      <div class="res-card rv"><div class="amt">$2.4M</div><div class="lbl">Defamation settlement — false viral claims against a business owner</div></div>
+      <div class="res-card rv"><div class="amt">$875K</div><div class="lbl">Harassment judgment — coordinated online stalking campaign</div></div>
+      <div class="res-card rv"><div class="amt">1,200+</div><div class="lbl">Defamatory posts, videos &amp; reviews removed</div></div>
+      <div class="res-card rv"><div class="amt">300+</div><div class="lbl">Anonymous attackers identified &amp; served</div></div>
+    </div>
+    <p class="res-note">Prior results do not guarantee a similar outcome. Every case is evaluated on its own facts.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SAMPLE CONTENT — REPLACE WITH REAL CLIENT REVIEWS BEFORE SHARING
+     Publishing invented testimonials for a law firm can violate
+     attorney advertising rules. These reviews are PLACEHOLDERS.
+     ============================================================ -->
+<section id="reviews">
+  <div class="wrap">
+    <span class="sec-kicker rv">Client Reviews</span>
+    <h2 class="sec-title rv">What Our Clients Say</h2>
+    <p class="sec-sub rv">Real people, real attacks, real outcomes.</p>
+    <div class="rev-grid">
+      <div class="rev-card rv">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Someone created fake accounts in my name and posted lies that cost me my job. Webb &amp; Woodford found out who it was in weeks, got everything taken down, and we settled for more than I expected. I finally sleep at night."</blockquote>
+        <div class="rev-who"><div class="rev-ava">M</div><div><div class="n">Marcus T.</div><div class="t">Harassment Victim — Lexington, KY</div></div></div>
+      </div>
+      <div class="rev-card rv">
+        <div class="stars">★★★★★</div>
+        <blockquote>"A competitor flooded my business with fake one-star reviews and it nearly killed us. These lawyers sued, unmasked the reviewer, and got us a settlement that covered every dollar we lost — plus the reviews gone."</blockquote>
+        <div class="rev-who"><div class="rev-ava">S</div><div><div class="n">Sarah L.</div><div class="t">Business Owner — Louisville, KY</div></div></div>
+      </div>
+      <div class="rev-card rv">
+        <div class="stars">★★★★★</div>
+        <blockquote>"My ex was posting private photos of me everywhere. I called in a panic and they acted the same day. Everything came down, and he is now facing real consequences. They treated me like family."</blockquote>
+        <div class="rev-who"><div class="rev-ava">J</div><div><div class="n">Jessica R.</div><div class="t">Privacy Client — Cincinnati, OH</div></div></div>
+      </div>
+    </div>
+    <div class="rev-cta rv">
+      <h3 class="serif" style="font-size:24px;margin-bottom:10px">Were we able to help you?</h3>
+      <p>Your review helps other victims find the courage to fight back. Share your experience with Webb &amp; Woodford.</p>
+      <a href="#contact" class="btn btn-gold">Leave Us a Review</a>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <span class="sec-kicker rv">How It Works</span>
+    <h2 class="sec-title rv">From Attack to Accountability in Three Steps</h2>
+    <div class="steps">
+      <div class="step rv">
+        <div class="n">1</div>
+        <h3>Tell Us What Happened</h3>
+        <p>Call or send the consultation form below. We review your situation the same day — what was posted, where, and by whom — and give you a straight answer about your options.</p>
+      </div>
+      <div class="step rv">
+        <div class="n">2</div>
+        <h3>We Unmask &amp; Strike</h3>
+        <p>We preserve the evidence, file to unmask anonymous attackers, and fire off takedown demands and legal filings. Harassers learn very quickly that "anonymous" was an illusion.</p>
+      </div>
+      <div class="step rv">
+        <div class="n">3</div>
+        <h3>You Get Justice</h3>
+        <p>Content comes down, attackers are exposed, and we pursue every dollar of compensation the law allows — through settlement or verdict.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="sec-kicker rv">Get Help Now</span>
+    <h2 class="sec-title rv">Request Your Free Consultation</h2>
+    <p class="sec-sub rv">Every day a defamatory post stays up, the damage grows. Tell us what happened — an attorney reviews every submission personally.</p>
+    <div class="contact-grid">
+      <div class="c-info rv">
+        <div class="c-row">
+          <div class="c-ico">📞</div>
+          <div><h4>24/7 Emergency Line</h4><a href="tel:+19373496547">(937) 349-6547</a></div>
+        </div>
+        <div class="c-row">
+          <div class="c-ico">✉️</div>
+          <div><h4>Email</h4><a href="mailto:webbwoodfordlaw@gmail.com">webbwoodfordlaw@gmail.com</a></div>
+        </div>
+        <div class="c-row">
+          <div class="c-ico">📍</div>
+          <div><h4>Office</h4><p>333 W Vine St<br>Lexington, KY</p></div>
+        </div>
+        <div class="c-row">
+          <div class="c-ico">🕐</div>
+          <div><h4>Hours</h4><p>Mon–Fri: 9:00 AM – 5:00 PM<br>Emergencies: 24/7</p></div>
+        </div>
+      </div>
+      <form class="c-form rv" id="consultForm">
+        <h3 class="serif">Tell Us What Happened</h3>
+        <p>Confidential. No obligation. An attorney — not a call center — reviews every message.</p>
+        <div class="f-row">
+          <div class="f-group"><label for="fName">Full Name *</label><input id="fName" name="name" required placeholder="Jane Doe"></div>
+          <div class="f-group"><label for="fPhone">Phone *</label><input id="fPhone" name="phone" type="tel" required placeholder="(555) 123-4567"></div>
+        </div>
+        <div class="f-group"><label for="fEmail">Email *</label><input id="fEmail" name="email" type="email" required placeholder="you@example.com"></div>
+        <div class="f-group"><label for="fType">What are you dealing with? *</label>
+          <select id="fType" name="type" required>
+            <option value="">Select one…</option>
+            <option>Online harassment / cyberstalking</option>
+            <option>Defamation (false statements about me)</option>
+            <option>Anonymous attacker — need them identified</option>
+            <option>Content I need taken down</option>
+            <option>Non-consensual imagery / sextortion</option>
+            <option>Business / brand reputation attack</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="f-group"><label for="fMsg">Describe what happened *</label><textarea id="fMsg" name="message" required placeholder="Who is targeting you, where is it posted, and how is it harming you? Include links if you have them."></textarea></div>
+        <button type="submit" class="btn btn-gold" style="width:100%">Send for Attorney Review →</button>
+        <p class="form-note">Submitting this form does not create an attorney–client relationship. Do not include highly sensitive personal data until we speak.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" style="text-decoration:none">
+          <span class="brand-mark">W²</span>
+          <span class="brand-name" style="color:#fff">Webb &amp; Woodford<small>Attorneys at Law</small></span>
+        </a>
+        <p>Lexington, Kentucky attorneys holding online harassers, defamers, and anonymous attackers accountable — in court and on every platform.</p>
+        <p><a href="tel:+19373496547" style="color:#fff;font-weight:700">(937) 349-6547</a></p>
+      </div>
+      <div>
+        <h4>PRACTICE</h4>
+        <ul>
+          <li><a href="#practice">Harassment Defense</a></li>
+          <li><a href="#practice">Defamation Lawsuits</a></li>
+          <li><a href="#practice">Unmasking Attackers</a></li>
+          <li><a href="#practice">Content Takedowns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>FIRM</h4>
+        <ul>
+          <li><a href="#attorneys">Our Attorneys</a></li>
+          <li><a href="#results">Case Results</a></li>
+          <li><a href="#reviews">Client Reviews</a></li>
+          <li><a href="#contact">Free Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      Attorney Advertising. This website is for general information only and does not constitute legal advice. Viewing this site or contacting the firm does not create an attorney–client relationship. Prior results do not guarantee a similar outcome. Do not send confidential information until an attorney–client relationship has been established.
+    </div>
+    <div class="copy">
+      <span>© 2026 Webb &amp; Woodford, Attorneys at Law. All rights reserved.</span>
+      <span>333 W Vine St, Lexington, KY</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile nav
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Expandable practice cards
+document.querySelectorAll('.pcard').forEach(card => {
+  card.addEventListener('click', () => {
+    const open = card.classList.toggle('open');
+    card.querySelector('.toggle').textContent = open ? '− Show less' : '+ Learn more';
+  });
+});
+
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+// Consultation form -> opens the firm's email with details prefilled
+document.getElementById('consultForm').addEventListener('submit', function(ev) {
+  ev.preventDefault();
+  const f = ev.target;
+  const subject = encodeURIComponent('Consultation Request — ' + f.type.value);
+  const body = encodeURIComponent(
+    'Name: ' + f.name.value + '\n' +
+    'Phone: ' + f.phone.value + '\n' +
+    'Email: ' + f.email.value + '\n' +
+    'Issue: ' + f.type.value + '\n\n' +
+    'Details:\n' + f.message.value
+  );
+  window.location.href = 'mailto:webbwoodfordlaw@gmail.com?subject=' + subject + '&body=' + body;
+  const btn = f.querySelector('button[type="submit"]');
+  btn.textContent = '✓ Opening your email…';
+  setTimeout(() => { btn.textContent = 'Send for Attorney Review →'; }, 4000);
+});
+</script>
 </body>
 </html>
