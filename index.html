@@ -133,6 +133,14 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 .step .n{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:#231a02;font-family:'Playfair Display',serif;font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
 .step h3{font-size:21px;margin-bottom:10px}
 .step p{color:var(--mut);font-size:15px}
+/* ---------- connect / social ---------- */
+.connect{background:#fff}
+.soc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-top:44px}
+.soc-card{background:var(--bg);border:1px solid var(--line);border-radius:var(--rad);padding:28px 18px;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;transition:transform .2s ease,box-shadow .2s ease}
+.soc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.soc-ico{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy3));color:var(--gold-lt);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700}
+.soc-name{font-weight:700;font-size:16px;color:var(--navy)}
+.soc-desc{font-size:13px;color:var(--mut);text-align:center}
 /* ---------- contact ---------- */
 .contact{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#fff}
 .contact .sec-title{color:#fff}
@@ -468,6 +476,22 @@ footer{background:#070d1c;color:#93a0b8;padding:60px 0 30px;font-size:14px}
         <h3>You Get Justice</h3>
         <p>Content comes down, attackers are exposed, and we pursue every dollar of compensation the law allows — through settlement or verdict.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="connect">
+  <div class="wrap" style="text-align:center">
+    <span class="sec-kicker rv">Stay Connected</span>
+    <h2 class="sec-title rv">Follow the Fight</h2>
+    <p class="sec-sub rv" style="margin:0 auto">Case breakdowns, legal tips, and firm updates — everywhere you are.</p>
+    <div class="soc-grid">
+      <!-- REPLACE href="#" with the firm's real profile URLs before sharing publicly -->
+      <a class="soc-card rv" href="#" aria-label="YouTube"><span class="soc-ico">▶</span><span class="soc-name">YouTube</span><span class="soc-desc">Case wins &amp; legal explainers</span></a>
+      <a class="soc-card rv" href="#" aria-label="TikTok"><span class="soc-ico">♪</span><span class="soc-name">TikTok</span><span class="soc-desc">60-second legal tips</span></a>
+      <a class="soc-card rv" href="#" aria-label="Facebook"><span class="soc-ico">f</span><span class="soc-name">Facebook</span><span class="soc-desc">News &amp; firm updates</span></a>
+      <a class="soc-card rv" href="https://github.com/webbwoodfordlaw-del" aria-label="GitHub"><span class="soc-ico">⌨</span><span class="soc-name">GitHub</span><span class="soc-desc">Our home on the web</span></a>
+      <a class="soc-card rv" href="#contact" aria-label="Blog"><span class="soc-ico">✎</span><span class="soc-name">Blog</span><span class="soc-desc">In-depth articles — coming soon</span></a>
     </div>
   </div>
 </section>
