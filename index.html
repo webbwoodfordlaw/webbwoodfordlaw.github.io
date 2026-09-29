@@ -97,8 +97,8 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);ba
 /* ---------- attorneys ---------- */
 .att-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px}
 .att-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 6px 20px rgba(10,20,40,.05);display:flex}
-.att-photo{flex:0 0 220px;background:linear-gradient(150deg,var(--navy2),var(--navy));display:flex;align-items:center;justify-content:center;position:relative}
-.att-photo .mono{width:120px;height:120px;border-radius:50%;border:2px solid rgba(201,162,39,.6);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:40px;font-weight:700;color:var(--gold-lt);background:rgba(201,162,39,.08)}
+.att-photo{flex:0 0 230px;position:relative;min-height:320px;background:var(--navy2);overflow:hidden}
+.att-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
 .att-body{padding:34px 32px}
 .att-body .role{color:var(--gold-dk);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
 .att-body h3{font-size:26px;margin-bottom:10px}
@@ -174,7 +174,7 @@ footer{background:#070d1c;color:#93a0b8;padding:60px 0 30px;font-size:14px}
   .stat{border-top:1px solid rgba(255,255,255,.09)}
   .firm-grid,.contact-grid,.att-grid{grid-template-columns:1fr}
   .att-card{flex-direction:column}
-  .att-photo{flex:none;padding:44px 0}
+  .att-photo{flex:none;height:340px;min-height:0}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
@@ -369,22 +369,23 @@ footer{background:#070d1c;color:#93a0b8;padding:60px 0 30px;font-size:14px}
     <h2 class="sec-title rv">The Attorneys</h2>
     <p class="sec-sub rv">Seasoned litigators who understand both the courtroom and the comment section.</p>
     <div class="att-grid">
+      <!-- AI-GENERATED PLACEHOLDER PORTRAITS — replace with real headshots when available -->
       <div class="att-card rv">
-        <div class="att-photo"><span class="mono">WW</span></div>
+        <div class="att-photo"><img src="images/adam-webb.webp" alt="Adam Webb, Founding Partner"></div>
         <div class="att-body">
           <div class="role">Founding Partner</div>
-          <h3>Woodford Webb</h3>
-          <p>A licensed Kentucky attorney and Lexington business leader, Woodford brings decades of courtroom, boardroom, and real-world experience to every case. Admitted to practice in Kentucky and before the U.S. District Courts for the Eastern and Western Districts of Kentucky and the U.S. Court of Appeals for the Sixth Circuit.</p>
-          <div class="att-tags"><span>Defamation Litigation</span><span>Harassment Defense</span><span>Business Law</span></div>
+          <h3>Adam Webb</h3>
+          <p>A seasoned Kentucky litigator, Adam has spent his career in the courtroom holding wrongdoers accountable. A graduate of the University of Kentucky College of Law, he brings decades of trial experience to every defamation and harassment case the firm takes on.</p>
+          <div class="att-tags"><span>Defamation Litigation</span><span>Harassment Defense</span><span>Trial Practice</span></div>
         </div>
       </div>
       <div class="att-card rv">
-        <div class="att-photo"><span class="mono">+</span></div>
+        <div class="att-photo"><img src="images/azura-woodfield.webp" alt="Azura Woodfield, Partner"></div>
         <div class="att-body">
           <div class="role">Partner</div>
-          <h3>Partner Profile Coming Soon</h3>
-          <p>Send us your photo, name, and bio and this card will be completed — or we can remove it if the firm is presented as a solo practice.</p>
-          <div class="att-tags"><span>Photo forthcoming</span><span>Bio forthcoming</span></div>
+          <h3>Azura Woodfield</h3>
+          <p>Azura leads the firm's digital practice — unmasking anonymous attackers, compelling content takedowns, and litigating online defamation across every major platform. She earned her law degree from the University of Pennsylvania Law School.</p>
+          <div class="att-tags"><span>Internet Defamation</span><span>Privacy Law</span><span>Content Takedowns</span></div>
         </div>
       </div>
     </div>
